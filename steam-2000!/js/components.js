@@ -85,10 +85,10 @@ function generarImagenPlaceholder(titulo, genero, tamaño) {
 function renderizarTienda() {
     const app = document.getElementById("app");
 
-    // Leemos el modo de vista desde la configuración
+    // Leer el modo de vista desde la configuración
     vistaActual = configDisplay("view_mode", "cards");
 
-    // Generamos las opciones del select desde las categorías del YAML
+    // Generar las opciones del select desde las categorías del YAML
     let opcionesCategorias = "";
     if (configuracion.categories) {
         configuracion.categories.forEach(function (categoria) {
@@ -143,7 +143,7 @@ function renderizarTienda() {
         filtrarJuegos(document.getElementById("filtro-genero").value);
     });
 
-    // Mostramos todos los juegos inicialmente
+    // Mostrar todos los juegos inicialmente
     mostrarJuegos(datosJuegos);
 }
 
@@ -169,14 +169,14 @@ function mostrarJuegos(juegos) {
     const porPagina = configDisplay("items_per_page", 6);
     const mostrarImagenes = configDisplay("show_images", true);
 
-    // Reiniciamos paginación
+    // Reiniciar paginación
     juegosMostrados = 0;
 
-    // Cortamos el array según items_per_page
+    // Cortar el array según items_per_page
     const juegosPagina = juegos.slice(0, porPagina);
     juegosMostrados = juegosPagina.length;
 
-    // Generamos el HTML según el modo de vista
+    // Generar el HTML según el modo de vista
     if (vistaActual === "cards") {
         contenedor.innerHTML = `<div class="row g-3">${generarCardsHTML(juegosPagina, mostrarImagenes)}</div>`;
     } else {
@@ -206,7 +206,7 @@ function cargarMasJuegos(juegos, porPagina, mostrarImagenes) {
     const siguientesJuegos = juegos.slice(juegosMostrados, juegosMostrados + porPagina);
     juegosMostrados += siguientesJuegos.length;
 
-    // Añadimos al contenedor existente
+    // Añadir al contenedor existente
     if (vistaActual === "cards") {
         const row = contenedor.querySelector(".row");
         if (row) {
@@ -219,7 +219,7 @@ function cargarMasJuegos(juegos, porPagina, mostrarImagenes) {
         }
     }
 
-    // Ocultamos el botón si ya no quedan más juegos
+    // Ocultar el botón si ya no quedan más juegos
     if (juegosMostrados >= juegos.length) {
         document.getElementById("paginacion").innerHTML = "";
     }
@@ -539,7 +539,7 @@ function renderizarLogin() {
         const inputPassword = document.getElementById("input-password");
         const mensajeLogin = document.getElementById("mensaje-login");
 
-        // Limpiamos validaciones
+        // Limpiar validaciones
         inputUsuario.classList.remove("is-invalid");
         inputPassword.classList.remove("is-invalid");
         mensajeLogin.innerHTML = "";
@@ -556,7 +556,7 @@ function renderizarLogin() {
         }
         if (!formularioValido) return;
 
-        // Guardamos el usuario en localStorage
+        // Guardar el usuario en localStorage
         const usuario = { nombre: inputUsuario.value.trim(), logueado: true };
         localStorage.setItem("usuario", JSON.stringify(usuario));
 
@@ -566,7 +566,7 @@ function renderizarLogin() {
             </div>
         `;
 
-        // Actualizamos la navbar (usa actualizarNavbarIdioma que ya detecta usuario logueado)
+        // Actualizar la navbar (usa actualizarNavbarIdioma que ya detecta usuario logueado)
         actualizarNavbarIdioma();
 
         setTimeout(function () {
@@ -644,7 +644,7 @@ function renderizarRegistro() {
         const checkTerminos = document.getElementById("reg-terminos");
         const mensajeRegistro = document.getElementById("mensaje-registro");
 
-        // Limpiamos validaciones
+        // Limpiar validaciones
         inputNombre.classList.remove("is-invalid");
         inputEmail.classList.remove("is-invalid");
         inputPassword.classList.remove("is-invalid");
@@ -676,7 +676,7 @@ function renderizarRegistro() {
         }
         if (!formularioValido) return;
 
-        // Guardamos el usuario registrado
+        // Guardar el usuario registrado
         const nuevoUsuario = {
             nombre: inputNombre.value.trim(),
             email: inputEmail.value.trim(),

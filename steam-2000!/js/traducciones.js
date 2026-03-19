@@ -198,21 +198,21 @@ function labelCategoria(categoria) {
  * Actualiza la configuración, la navbar, el footer y la sección actual.
  */
 function cambiarIdioma(nuevoIdioma) {
-    // Actualizamos el idioma actual
+    // Actualizar el idioma actual
     idiomaActual = nuevoIdioma;
 
-    // Actualizamos la configuración
+    // Actualizar la configuración
     if (configuracion.app) {
         configuracion.app.language = nuevoIdioma;
     }
 
-    // Actualizamos los textos de la navbar
+    // Actualizar los textos de la navbar
     actualizarNavbarIdioma();
 
-    // Actualizamos el footer
+    // Actualizar el footer
     actualizarFooterIdioma();
 
-    // Volvemos a renderizar la sección actual
+    // Volver a renderizar la sección actual
     navegar();
 }
 
@@ -223,7 +223,7 @@ function cambiarIdioma(nuevoIdioma) {
 function actualizarNavbarIdioma() {
     const enlaces = document.querySelectorAll(".navbar-nav .nav-link");
 
-    // Comprobamos si hay un usuario logueado
+    // Comprobar si hay un usuario logueado
     const usuario = JSON.parse(localStorage.getItem("usuario"));
 
     enlaces.forEach(function (enlace) {
@@ -234,7 +234,7 @@ function actualizarNavbarIdioma() {
         } else if (href === "#inventario") {
             enlace.textContent = t("inventario");
         } else if (href === "#login") {
-            // Si el usuario está logueado, mostramos su nombre
+            // Si el usuario está logueado, muestra su nombre
             if (usuario && usuario.logueado) {
                 enlace.textContent = usuario.nombre;
             } else {
@@ -245,7 +245,7 @@ function actualizarNavbarIdioma() {
         }
     });
 
-    // Actualizamos la etiqueta del switch de tema
+    // Actualizar la etiqueta del switch de tema
     const labelTema = document.querySelector("label[for='themeSwitch']");
     if (labelTema) {
         labelTema.textContent = t("modoOscuro");

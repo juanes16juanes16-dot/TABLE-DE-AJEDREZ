@@ -11,10 +11,10 @@ let configuracion = {};
  */
 async function cargarJuegos() {
     try {
-        // Hacemos la petición al archivo JSON
+        // Hacer la petición al archivo JSON
         const response = await fetch("data/games.json");
 
-        // Convertimos la respuesta a un objeto JavaScript
+        // Convertir la respuesta a un objeto JavaScript
         const juegos = await response.json();
 
         return juegos;
@@ -31,20 +31,20 @@ async function cargarJuegos() {
  */
 async function cargarConfiguracion() {
     try {
-        // Hacemos la petición al archivo YAML
+        // Hacer la petición al archivo YAML
         const response = await fetch("data/config.yaml");
 
-        // Leemos la respuesta como texto plano
+        // Leer la respuesta como texto plano
         const textoYaml = await response.text();
 
-        // Convertimos el texto YAML a un objeto JavaScript usando js-yaml
+        // Convertir el texto YAML a un objeto JavaScript usando js-yaml
         const config = jsyaml.load(textoYaml);
 
         return config;
     } catch (error) {
         console.error("Error al cargar la configuración:", error);
 
-        // Devolvemos valores por defecto si falla la carga
+        // Devolver valores por defecto si falla la carga
         return {
             theme: "dark",
             language: "es",
